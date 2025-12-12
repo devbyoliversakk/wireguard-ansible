@@ -1,0 +1,10 @@
+[Interface]
+Address = {{ wg_interface_address }}
+ListenPort = {{ wg_listen_port | default('51820') }}
+PrivateKey = {{ wg_private_key }}
+{% if wg_post_up is defined %}
+PostUp = {{ wg_post_up }}
+{% endif %}
+{% if wg_post_down is defined %}
+PostDown = {{ wg_post_down }}
+{% endif %}

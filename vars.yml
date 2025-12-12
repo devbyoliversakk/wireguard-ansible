@@ -1,0 +1,9 @@
+---
+# WireGuard Server Configuration
+wg_interface_address: "10.0.0.1/24"
+wg_listen_port: 51820
+wg_private_key: "YOUR_PRIVATE_KEY_HERE"
+
+# NAT/Firewall rules (optional)
+wg_post_up: "iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE"
+wg_post_down: "iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE"
