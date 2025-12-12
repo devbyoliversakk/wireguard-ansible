@@ -1,0 +1,6 @@
+argcomplete
+pip
+dnspython
+ansible
+argcomplete
+ansible-lint
