@@ -7,3 +7,14 @@ wg_private_key: "YOUR_PRIVATE_KEY_HERE"
 # NAT/Firewall rules (optional)
 wg_post_up: "iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE"
 wg_post_down: "iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE"
+
+# WireGuard Peers
+wg_peers:
+  - public_key: "PEER1_PUBLIC_KEY_HERE"
+    allowed_ips: "10.0.0.2/32"
+    persistent_keepalive: 25
+    # endpoint: "peer1.example.com:51820"  # Uncomment if this is a client config
+  
+  - public_key: "PEER2_PUBLIC_KEY_HERE"
+    allowed_ips: "10.0.0.3/32"
+    persistent_keepalive: 25
