@@ -10,33 +10,3 @@
       include_tasks: task-os_upgrade.yaml
       when: ansible_os_family == "Debian"
 
-    - name: Install WireGuard
-      apt:
-        name: wireguard
-        state: present
-      when: ansible_os_family == "Debian"
-
-    - name: Ensure WireGuard config directory exists
-      file:
-        path: /etc/wireguard
-        state: directory
-    - name: Generate WireGuard configuration from template
-      template:
-        src: files/wg0.conf.j2
-        dest: /etc/wireguard/wg0.conf
-        mode: '0600'
-        owner: root
-        group: root
-
-    - name: Enable IP forwarding
-      sysctl:
-        name: net.ipv4.ip_forward
-        value: '1'
-        state: present
-        reload: yes
-
-    - name: Enable and start WireGuard service
-      systemd:
-        name: wg-quick@wg0
-        enabled: yes
-        state: started
