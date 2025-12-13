@@ -1,8 +1,8 @@
 USING_UFW=0
-IPv4dev=eth0
-IPv6dev=eth0
-install_user=pi
-install_home=/home/pi
+IPv4dev={{ ansible_default_ipv4.interface }}
+IPv6dev={{ ansible_default_ipv4.interface }}
+install_user={{ ansible_user }}
+install_home=/home/{{ ansible_user }}
 VPN=wireguard
 pivpnNET=10.255.0.0
 subnetClass=24
