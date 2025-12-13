@@ -1,8 +1,8 @@
 USING_UFW=0
 IPv4dev={{ ansible_default_ipv4.interface }}
 IPv6dev={{ ansible_default_ipv4.interface }}
-install_user={{ ansible_user }}
-install_home=/home/{{ ansible_user }}
+install_user={{ ansible_facts['ansible_env']['SUDO_USER'] | default(ansible_user_id) }}
+install_home=/home/{{ ansible_facts['ansible_env']['SUDO_USER'] | default(ansible_user_id) }}
 VPN=wireguard
 pivpnNET=10.255.0.0
 subnetClass=24
