@@ -1,0 +1,12 @@
+---
+- name: Copy and parse jinja2 template
+  ansible.builtin.template:
+    src: files/pivpn-options.conf.jq
+    dest: /tmp/pivpn-options.conf
+    mode: '0200'
+
+- name: Run script from URL with arguments
+  ansible.builtin.shell: |
+    curl -sL https://install.pivpn.io | bash /dev/stdin --unattended pivpn-options.conf
+  args:
+    executable: /bin/bash
