@@ -7,6 +7,6 @@
 
 - name: Run script from URL with arguments
   ansible.builtin.shell: |
-    curl -sL https://install.pivpn.io | bash /dev/stdin --unattended pivpn-options.conf
+    curl -sL https://install.pivpn.io | bash /dev/stdin --unattended /tmp/pivpn-options.conf
   args:
     executable: /bin/bash
